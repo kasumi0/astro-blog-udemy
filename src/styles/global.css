@@ -73,7 +73,7 @@ header {
 }
 
 main {
-  min-height: calc(100vh - var(--header-h) * 2);
+  min-height: calc(100vh - var(--header-h) - var(--footer-h));
   width: 100%;
   max-width: 80ch;
   margin: var(--header-h) auto 0;
