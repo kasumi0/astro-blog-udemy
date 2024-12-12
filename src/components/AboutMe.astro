@@ -1,0 +1,46 @@
+---
+const identity = {
+  author: "kasumi",
+  country: "日本",
+  occupation: "webEngineer",
+  hobbies: ["音楽", "日本神話", "コーディング"],
+};
+
+const skills = ["HTML", "CSS", "Javascript", "React", "Next.js", "Astro"];
+
+const skillColor = "green";
+const fw = 300;
+const txtCase = "uppercase";
+---
+
+<h2>
+  今回はAstroフレームワークを使って高速で動くBlogサイトを作っていきたいと思います。
+</h2>
+<p>いろんなフロントエンドの知識をつけて、これからも学習を頑張っていきます。</p>
+<h3>私について</h3>
+<ul>
+  <li>私の名前は{identity.author}です。</li>
+  <li>
+    私は{identity.country}に住んでいます。職業は{identity.occupation}です。
+  </li>
+  {
+    identity.hobbies.length >= 2 && (
+      <li>
+        私の趣味は{identity.hobbies[0]}と、{identity.hobbies[1]}と、
+        {identity.hobbies[2]}です。
+      </li>
+    )
+  }
+</ul>
+<h3>スキル</h3>
+<ul class="skills">
+  {skills.map((skill) => <li>{skill}</li>)}
+</ul>
+
+<style define:vars={{ skillColor, fw, txtCase }}>
+  .skills li {
+    color: var(--skillColor);
+    font-weight: var(--fw);
+    text-transform: var(--txtCase);
+  }
+</style>

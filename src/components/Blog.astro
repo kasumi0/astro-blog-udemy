@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import BlogPost from "./BlogPost.astro";
+
+const allPosts = await getCollection('posts');
+---
+
+<h2>このブロブページは今後学習していく内容をポストしていきます。</h2>
+<ul class="post-list">
+  {
+    allPosts.map((post) => (
+      <BlogPost url={`/posts/${post.slug}`} title={post.data.title} />
+    ))
+  }
+</ul>
+
+<style>
+  .post-list {
+    margin-left: 1rem;
+    li {
+      list-style: inside;
+    }
+  }
+</style>

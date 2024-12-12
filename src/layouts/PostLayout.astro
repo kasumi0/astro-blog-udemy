@@ -1,0 +1,41 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout pageTitle={frontmatter.title}>
+  <div class="tags">
+    {frontmatter.tags.map((tag) => <a href={`/tags/${tag}`}>{tag}</a>)}
+  </div>
+  <p>投稿日：{String(frontmatter.pubDate).slice(0, 10)}</p>
+  <p>説明：{frontmatter.description}</p>
+  <p>執筆者：{frontmatter.author}</p>
+  <img
+    src={frontmatter.image.url}
+    alt={frontmatter.image.alt}
+    class="thumbnail"
+  />
+  <div class="body">
+    <slot />
+  </div>
+</Layout>
+
+<style>
+  .thumbnail {
+    display: block;
+    margin-block: 20px;
+  }
+  .body {
+    ol,
+    li {
+      list-style: decimal;
+      margin-left: 1em;
+    }
+    li {
+      padding-left: 0.4em;
+    }
+  }
+  .tags {
+    margin-bottom: 1em;
+  }
+</style>
